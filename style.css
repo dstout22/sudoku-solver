@@ -1,0 +1,75 @@
+/* page centering */
+body {
+  text-align: center;
+  background: #ffd6f2;
+}
+
+/* grid container */
+#sudoku-grid {
+  display: grid;
+  grid-template-columns: repeat(9, 40px);
+  grid-template-rows: repeat(9, 40px);
+  margin: 20px auto;
+  /* gap is zero - not included */
+  gap: 0;
+  border: 3px solid #000;        /* outer thick frame */
+  /* box-sizing: content-box; */
+}
+
+/* formats the grid around the sudoku puzzle */
+.grid-wrapper {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  margin-top: 20px;
+}
+
+/* cell base style */
+#sudoku-grid input {
+  display: inline-grid;
+  text-align: center;
+  font-size: 20px;
+  border: 1px solid #999;       /* thin inner lines by default */
+  box-sizing: border-box;       /* include border in size */
+  outline: none;
+}
+
+/* vertical separators: add a thick right border after every 3rd column,
+   but DO NOT add it for the last column (container already has outer border). */
+#sudoku-grid input:nth-child(3n):not(:nth-child(9n)) {
+  border-right: 3px solid #000;
+}
+
+/* horizontal separators: add a thick bottom border after row 3 and row 6
+   (we target the index ranges for those rows) */
+/* row 3: indices 19..27 */
+#sudoku-grid input:nth-child(n+19):nth-child(-n+27),
+/* row 6: indices 46..54 */
+#sudoku-grid input:nth-child(n+46):nth-child(-n+54) {
+  border-bottom: 3px solid #000;
+}
+
+/* small focus highlight to help user input */
+#sudoku-grid input:focus {
+  background: #f8f0ca;
+}
+
+/* resizes the solve button */
+#solve-btn {
+  width: 80px;
+  height: 40px;
+  font-size: 16px;
+}
+
+#reset-btn {
+  width: 80px;
+  height: 40px;
+  font-size: 16px;
+}
+
+.dynamic-satisfiability {
+  width: 80px;
+  height:40px;
+  font-size: 32px;
+  text-align: center;
+  margin: 20px auto;
+}
